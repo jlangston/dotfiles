@@ -10,7 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
 
-set $mod Alt
+set $mod Mod4 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -344,5 +344,5 @@ input "1133:50184:Logitech_USB_Trackball" {
  }
 
 input 9610:30:HAILUCK_CO.,LTD_USB_KEYBOARD {
-  xkb_options ctrl:nocaps 
+  xkb_options ctrl:swap_lalt_lctl,caps:escape
 }
