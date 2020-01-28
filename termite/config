@@ -41,6 +41,7 @@ scrollback_lines = 10000
 #scrollbar = off
 
 [colors]
+background = rgba(30, 30, 30, 0.8)
 # Black, Gray, Silver, White
 color0  = #1d2021
 color8  = #665c54
