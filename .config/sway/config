@@ -327,7 +327,7 @@ default_border pixel
 #exec_always --no-startup-id dropbox
 
 #exec --no-startup-id /home/jefflangston/dev/github/i3-alternating-layout/alternating_layouts.py
-exec --no-startup-id swaybg -m stretch -i /usr/share/backgrounds/$(ls /usr/share/backgrounds | shuf -n 1)
+exec --no-startup-id swaybg -i /usr/share/backgrounds/$(ls /usr/share/backgrounds | shuf -n 1)
 exec swayidle -w \
          timeout 90 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
          resume 'swaymsg "output * dpms on"'
