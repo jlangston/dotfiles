@@ -1,10 +1,34 @@
 theme = "solarized-dark"
-icons = "awesome"
+[icons]
+name = "awesome"
+# [icons.overrides]\
+# backlight_empty = "☀️ "\
+# backlight_partial1 = "☀️ "\
+# backlight_partial2 = "☀️ "\
+# backlight_partial3 = "☀️ "\
+# backlight_full = "☀️ "\
+
+# [[block]]\
+# block = "pacman"\
+# \
+# [[block]]\
+# block = "backlight"
 
 [[block]]
 block = "music"
 player = "spotify"
 buttons = ["play", "next"]
+
+[[block]]
+block = "battery"
+device = "DisplayDevice"
+driver = "upower"
+format = "{percentage}%"
+
+# [[block]]\
+# block = "net"\
+# device = "wlan0"\
+# speed_down = true
 
 [[block]]
 block = "disk_space"
