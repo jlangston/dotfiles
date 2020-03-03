@@ -21,7 +21,6 @@ Plug  'https://github.com/mg979/vim-visual-multi'
 Plug  'https://github.com/Valloric/MatchTagAlways.git'
 Plug  'https://github.com/Raimondi/delimitMate.git'
 Plug  'https://github.com/easymotion/vim-easymotion'
-Plug  'https://github.com/severin-lemaignan/vim-minimap'
 Plug  'https://github.com/thaerkh/vim-workspace'
 Plug  'https://github.com/vim-utils/vim-husk'
 Plug  'https://github.com/ryanoasis/vim-devicons'
@@ -40,7 +39,6 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make install'}
 
 "Javascript
 Plug  'https://github.com/moll/vim-node', { 'for': 'javascript' }
-" Plug  'https://github.com/sidorares/node-vim-debugger', { 'do': 'npm i -g vimdebug', 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.jsx']}
 Plug  'https://github.com/othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx'] }
 Plug  'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx']}
 Plug  'https://github.com/posva/vim-vue'
@@ -57,8 +55,8 @@ Plug 'https://github.com/HerringtonDarkholme/yats.vim'
 
 "CSS
 Plug 'https://github.com/cakebaker/scss-syntax.vim'
-" Plug 'https://github.com/JulesWang/css.vim'
-" Plug 'https://github.com/hail2u/vim-css3-syntax'
+Plug 'https://github.com/JulesWang/css.vim'
+Plug 'https://github.com/hail2u/vim-css3-syntax'
 
 " Colors
 Plug  'https://github.com/lilydjwg/colorizer'
@@ -86,7 +84,6 @@ Plug 'https://github.com/SirVer/ultisnips'
 Plug 'https://github.com/honza/vim-snippets'
 Plug 'https://github.com/janko-m/vim-test'
 Plug 'https://github.com/sbdchd/neoformat'
-Plug 'https://github.com/rhysd/devdocs.vim'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/AndrewRadev/splitjoin.vim'
 Plug 'https://github.com/mattn/webapi-vim'
@@ -111,8 +108,6 @@ Plug 'https://github.com/prettier/vim-prettier', {
     \ 'ruby',
     \ 'html',
     \ 'swift' ] }
-Plug 'https://github.com/vim-scripts/selection_eval.vim'
-Plug 'https://github.com/tpope/vim-db'
 
 
 "Git
@@ -123,7 +118,6 @@ Plug  'https://github.com/jreybert/vimagit'
 
 "GoLang
 Plug  'https://github.com/fatih/vim-go'
-" Plug  'https://github.com/sebdah/vim-delve', { 'for': 'go'}
 
 "Ruby
 Plug  'https://github.com/tpope/vim-rails', { 'for': 'ruby' }
@@ -131,6 +125,9 @@ Plug  'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug  'https://github.com/tpope/vim-bundler', { 'for': 'ruby' }
 " Plug 'https://github.com/tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+
+"Varnish
+Plug 'fgsch/vim-varnish'
 
 
 call plug#end()
