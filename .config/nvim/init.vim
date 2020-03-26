@@ -139,7 +139,6 @@ Plug 'https://github.com/fgsch/vim-varnish'
 "Nginx
 Plug 'https://github.com/chr4/nginx.vim'
 
-
 call plug#end()
 
 filetype plugin indent on
