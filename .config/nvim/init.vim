@@ -130,6 +130,9 @@ Plug 'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 "Varnish
 Plug 'fgsch/vim-varnish'
 
+"Nginx
+Plug 'chr4/nginx.vim'
+
 
 call plug#end()
 
