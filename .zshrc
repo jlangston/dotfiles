@@ -43,7 +43,7 @@ zplug "zsh-users/zsh-completions"
 #zplug "zsh-users/zsh-history-substring-search"
 zplug "kiurchv/asdf.plugin.zsh", defer:2
 
-zplug "larkery/zsh-histdb"
+zplug "larkery/zsh-histdb", lazy:true
 
 # Syntax highlighting for commands, load last
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -65,8 +65,8 @@ zplug "themes/agnoster", from:oh-my-zsh
 zplug load
 
 
-if [ -f $HOME/.zplug/repos/larkery/sqllight-history ]; then
-  source $HOME/.zplug/repos/larkery
+if [ -f $HOME/.zplug/repos/larkery/zsh-histdb/sqlite-history.zsh ]; then
+  source $HOME/.zplug/repos/larkery/zsh-histdb/sqlite-history.zsh
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd histdb-update-outcome
 fi
