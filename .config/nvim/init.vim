@@ -34,7 +34,8 @@ Plug  'https://github.com/mechatroner/rainbow_csv'
 Plug  'https://github.com/simnalamburt/vim-mundo'
 Plug  'wincent/replay'
 Plug  'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'kevinhwang91/rnvimr', {'do': 'make install'}
+Plug  'kevinhwang91/rnvimr', {'do': 'make install'}
+Plug  'metakirby5/codi.vim'
 
 
 "Javascript
