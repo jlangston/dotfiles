@@ -38,7 +38,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [difftool]
-    prompt = true
+    prompt = false
 [diff]
     tool = nvimdiff
 [difftool "nvimdiff"]
@@ -60,5 +60,5 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [diff "enc"]
-  textconv = rails env_credentials:show --file
+  textconv = rails credentials:show --file
   cachetextconv = false

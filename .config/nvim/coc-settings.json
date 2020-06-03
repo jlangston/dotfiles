@@ -5,7 +5,7 @@
   "suggest.echodocSupport": true,
   "signature.enable": true,
   "codeLens.enable": true,
-  "diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": false,
   "languageserver": {
     "golang": {
       "command": "gopls",

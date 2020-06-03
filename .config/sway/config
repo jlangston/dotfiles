@@ -337,4 +337,5 @@ output HDMI-A-2 pos 5280 0 res 2650x1440 transform 270
 input "1133:50184:Logitech_USB_Trackball" {
   scroll_method on_button_down
   scroll_button 273
+  pointer_accel 1
 }

@@ -7,7 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 "Util
 Plug  'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug  'https://github.com/junegunn/fzf.vim'
-Plug 'https://github.com/alok/notational-fzf-vim'
+Plug  'https://github.com/alok/notational-fzf-vim'
 Plug  'https://github.com/mileszs/ack.vim'
 Plug  'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
 Plug  'https://github.com/jistr/vim-nerdtree-tabs.git'
@@ -32,14 +32,13 @@ Plug  'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug  'https://github.com/troydm/zoomwintab.vim'
 Plug  'https://github.com/mechatroner/rainbow_csv'
 Plug  'https://github.com/simnalamburt/vim-mundo'
-Plug  'wincent/replay'
-Plug  'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug  'kevinhwang91/rnvimr', {'do': 'make install'}
-Plug  'metakirby5/codi.vim'
+Plug  'https://github.com/wincent/replay'
+Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug  'https://github.com/kevinhwang91/rnvimr', {'do': 'make install'}
+Plug  'https://github.com/jceb/vim-orgmode'
 
 
 "Javascript
-Plug  'https://github.com/moll/vim-node', { 'for': 'javascript' }
 Plug  'https://github.com/othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx'] }
 Plug  'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx']}
 Plug  'https://github.com/posva/vim-vue'
@@ -69,13 +68,14 @@ Plug  'https://github.com/chriskempson/base16-vim'
 Plug  'https://github.com/RRethy/vim-illuminate'
 
 "Prose
-Plug  'https://github.com/tpope/vim-markdown.git'
+Plug  'https://github.com/godlygeek/tabular'
+Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'puremourning/vimspector'
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/puremourning/vimspector'
 Plug 'https://github.com/liuchengxu/vista.vim'
-Plug 'https://github.com/w0rp/ale'
+" Plug 'https://github.com/w0rp/ale'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-unimpaired'
@@ -88,7 +88,8 @@ Plug 'https://github.com/sbdchd/neoformat'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/AndrewRadev/splitjoin.vim'
 Plug 'https://github.com/mattn/webapi-vim'
-Plug 'pechorin/any-jump.nvim'
+Plug 'https://github.com/pechorin/any-jump.nvim'
+Plug 'https://github.com/metakirby5/codi.vim'
 
 
 Plug 'https://github.com/prettier/vim-prettier', {
@@ -117,6 +118,7 @@ Plug  'https://github.com/airblade/vim-gitgutter'
 Plug  'https://github.com/Yggdroot/indentLine'
 Plug  'https://github.com/tpope/vim-fugitive'
 Plug  'https://github.com/jreybert/vimagit'
+Plug  'https://github.com/rhysd/git-messenger.vim'
 
 "GoLang
 Plug  'https://github.com/fatih/vim-go'
@@ -126,13 +128,13 @@ Plug  'https://github.com/tpope/vim-rails', { 'for': 'ruby' }
 Plug  'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug  'https://github.com/tpope/vim-bundler', { 'for': 'ruby' }
 " Plug 'https://github.com/tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug  'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 "Varnish
-Plug 'fgsch/vim-varnish'
+Plug 'https://github.com/fgsch/vim-varnish'
 
 "Nginx
-Plug 'chr4/nginx.vim'
+Plug 'https://github.com/chr4/nginx.vim'
 
 
 call plug#end()
@@ -686,10 +688,12 @@ let g:VM_maps["Select h"]           = '<S-Left>'        " start selecting right
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'      " start selecting down
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'        " start selecting up<Paste>
 let g:VM_maps["Select All"] = '<M-C-g>'
+let g:VM_persistent_registers = 1
+let g:VM_overwrite_vim_registers = 1
 
 
 "Utilisnips
-let g:UltiSnipsExpandTrigger="<leader>e"
+let g:UltiSnipsExpandTrigger="<leader>ez"
 let g:UltiSnipsJumpForwardTrigger="<leader>b"
 let g:UltiSnipsJumpBackwardTrigger="<leader>z"
 nnoremap <leader>l :Snippets<CR>
@@ -795,6 +799,25 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"Markdown
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled = 1
+
+function! ToggleSpell()
+  if !exists("g:showingSpell")
+    let g:showingSpell=0
+  endif
+
+  if g:showingSpell==0
+    execute "hi SpellBad cterm=underline ctermfg=red"
+    let g:showingSpell=1
+  else
+    execute "hi clear SpellBad"
+    let g:showingSpell=0
+  endif
+endfunction
+nmap <Leader>sp :call ToggleSpell()<CR>
 
 if has('autocmd')
   augroup VimCSS3Syntax
