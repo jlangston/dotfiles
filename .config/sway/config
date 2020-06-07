@@ -31,6 +31,8 @@ floating_modifier $mod
 set $term env KITTY_ENABLE_WAYLAND=1 kitty
 bindsym $mod+Return exec kitty
 
+bindsym $mod+b exec vimb 
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
