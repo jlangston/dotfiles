@@ -47,7 +47,7 @@ set font-size=16
 set monospace-font-size=13
 
 # Default Full-Content zoom level in percent. Default is 100.
-set default-zoom=120
+set default-zoom=140
 
 # Shortcuts allow the opening of an URI built up from a named template with
 # additional parameters.
@@ -81,4 +81,4 @@ set status-css=color:#ffcc66;background-color:#393939;font:12pt DejaVu Sans Mono
 set status-ssl-css=color:#99cc99;background-color:#393939;font:12pt DejaVu Sans Mono;
 set status-ssl-invalid-css=color:#f2777a;background-color:#393939;font:12pt DejaVu Sans Mono;
 
-
+nnoremap <C-R> :e! simplyread();<CR>
