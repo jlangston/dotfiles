@@ -10,3 +10,4 @@
 .config/vimb/history
 .config/vimb/closed
 .config/vimb/cookies.db
+.config/vimb/command
