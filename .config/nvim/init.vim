@@ -35,6 +35,7 @@ Plug  'https://github.com/simnalamburt/vim-mundo'
 Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug  'https://github.com/kevinhwang91/rnvimr', {'do': 'make install'}
+Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
 Plug  'https://github.com/jceb/vim-orgmode'
 
 
