@@ -94,24 +94,24 @@ Plug 'https://github.com/metakirby5/codi.vim'
 
 
 Plug 'https://github.com/prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/1.x',
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'lua',
-    \ 'php',
-    \ 'python',
-    \ 'ruby',
-    \ 'html',
-    \ 'swift' ] }
+      \ 'do': 'yarn install',
+      \ 'branch': 'release/1.x',
+      \ 'for': [
+      \ 'javascript',
+      \ 'typescript',
+      \ 'css',
+      \ 'less',
+      \ 'scss',
+      \ 'json',
+      \ 'graphql',
+      \ 'markdown',
+      \ 'vue',
+      \ 'lua',
+      \ 'php',
+      \ 'python',
+      \ 'ruby',
+      \ 'html',
+      \ 'swift' ] }
 
 
 "Git
@@ -253,6 +253,13 @@ endfunction
 
 nmap <Leader>ot :call SetOceanTheme()<CR>
 
+
+function! SetClearBackground()
+  hi! Normal ctermbg=NONE guibg=NONE
+endfunction
+
+nmap <Leader>cb :call SetClearBackground()<CR>
+
 nmap <Leader>fi mzgg=G`z
 
 "Ctrl S to save
@@ -354,11 +361,11 @@ let g:user_emmet_settings = {
       \}
 
 function! ToggleJsxCssFt()
-    if &filetype == 'javascript.jsx'
-        set filetype=css
-    else
-        set filetype=javascript.jsx
-    endif
+  if &filetype == 'javascript.jsx'
+    set filetype=css
+  else
+    set filetype=javascript.jsx
+  endif
 endfunction
 
 nnoremap <leader>et :call ToggleJsxCssFt()<cr>
@@ -374,16 +381,16 @@ let g:vista_default_executive = 'coc'
 
 "coc
 let g:coc_global_extensions = [
-  \ 'coc-vimlsp',
-  \ 'coc-tsserver',
-  \ 'coc-vetur',
-  \ 'coc-rls',
-  \ 'coc-eslint', 
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-solargraph',
-  \ 'coc-python',
-  \ ]
+      \ 'coc-vimlsp',
+      \ 'coc-tsserver',
+      \ 'coc-vetur',
+      \ 'coc-rls',
+      \ 'coc-eslint', 
+      \ 'coc-prettier',
+      \ 'coc-json',
+      \ 'coc-solargraph',
+      \ 'coc-python',
+      \ ]
 nmap <C-k>l :CocList<CR>
 "
 " if hidden is not set, TextEdit might fail.
@@ -497,15 +504,15 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:vimspector_enable_mappings = 'HUMAN'
 
 "VimDif\
- if &diff
-    nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-    nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-    vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-    vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-    map <leader>1 :diffget LOCAL<CR>
-    map <leader>2 :diffget BASE<CR>
-    map <leader>3 :diffget REMOTE<CR>
- endif
+if &diff
+  nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
+  nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
+  vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+  vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+  map <leader>1 :diffget LOCAL<CR>
+  map <leader>2 :diffget BASE<CR>
+  map <leader>3 :diffget REMOTE<CR>
+endif
 
 " FZF
 let $FZF_DEFAULT_OPTS='--layout=reverse'
@@ -513,17 +520,17 @@ nnoremap <Leader>f :Rg<cr>
 nmap <C-p> :Files<cr>
 
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>,
-  \           <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \  <bang>0)
+      \ call fzf#vim#files(<q-args>,
+      \           <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \  <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 " Terminal buffer options for fzf
 autocmd! FileType fzf
@@ -562,26 +569,26 @@ let g:fzf_colors =
 " REQUIRED FOR LAZYGIT
 " Creates a floating window with a most recent buffer to be used
 function! CreateCenteredFloatingWindow()
-    let width = float2nr(&columns * 0.9)
-    let height = float2nr(&lines * 0.9)
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+  let width = float2nr(&columns * 0.9)
+  let height = float2nr(&lines * 0.9)
+  let top = ((&lines - height) / 2) - 1
+  let left = (&columns - width) / 2
+  let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    autocmd BufWipeout <buffer> exe 'bwipeout '.s:buf
+  let top = "╭" . repeat("─", width - 2) . "╮"
+  let mid = "│" . repeat(" ", width - 2) . "│"
+  let bot = "╰" . repeat("─", width - 2) . "╯"
+  let lines = [top] + repeat([mid], height - 2) + [bot]
+  let s:buf = nvim_create_buf(v:false, v:true)
+  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+  call nvim_open_win(s:buf, v:true, opts)
+  set winhl=Normal:Floating
+  let opts.row += 1
+  let opts.height -= 2
+  let opts.col += 2
+  let opts.width -= 4
+  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  autocmd BufWipeout <buffer> exe 'bwipeout '.s:buf
 endfunction
 
 " When term starts, auto go into insert mode
@@ -591,22 +598,22 @@ autocmd TermOpen * startinsert
 autocmd TermOpen * setlocal listchars= nonumber norelativenumber
 
 function! ToggleTerm(cmd)
-    if empty(bufname(a:cmd))
-        call CreateCenteredFloatingWindow()
-        call termopen(a:cmd, { 'on_exit': function('OnTermExit') })
-    else
-        bwipeout!
-    endif
+  if empty(bufname(a:cmd))
+    call CreateCenteredFloatingWindow()
+    call termopen(a:cmd, { 'on_exit': function('OnTermExit') })
+  else
+    bwipeout!
+  endif
 endfunction
 
 function! ToggleLazyGit()
-    call ToggleTerm('lazygit')
+  call ToggleTerm('lazygit')
 endfunction
 
 function! OnTermExit(job_id, code, event) dict
-    if a:code == 0
-        bwipeout!
-    endif
+  if a:code == 0
+    bwipeout!
+  endif
 endfunction
 
 " REQUIRED FOR LAZYGIT
@@ -746,23 +753,23 @@ let g:jsx_ext_required = 0
 " let g:tigris#enabled = 1
 
 "Golang
- let g:go_highlight_array_whitespace_error = 1
- let g:go_highlight_chan_whitespace_error = 1
- let g:go_highlight_extra_types = 1
- let g:go_highlight_space_tab_error = 1
- let g:go_highlight_trailing_whitespace_error = 1
- let g:go_highlight_operators = 1
- let g:go_highlight_functions = 1
- let g:go_highlight_function_arguments = 1
- let g:go_highlight_function_calls = 1
- let g:go_highlight_types = 1
- let g:go_highlight_fields = 1
- let g:go_highlight_build_constraints = 1
- let g:go_highlight_generate_tags = 1
- let g:go_highlight_string_spellcheck = 1
- let g:go_highlight_format_strings = 1
- let g:go_highlight_variable_declarations = 1
- let g:go_highlight_variable_assignments = 1
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_arguments = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
 
 " let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
@@ -844,18 +851,18 @@ let g:nv_search_paths = ['~/Dropbox/notes']
 map <Leader>nv :NV<cr>
 
 let g:firenvim_config = { 
-    \ 'globalSettings': {
-        \ 'alt': 'all',
-    \  },
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'cmdline': 'firenvim',
-            \ 'priority': 0,
-            \ 'selector': 'textarea',
-            \ 'takeover': 'never',
-        \ },
-    \ }
-\ }
+      \ 'globalSettings': {
+      \ 'alt': 'all',
+      \  },
+      \ 'localSettings': {
+      \ '.*': {
+      \ 'cmdline': 'firenvim',
+      \ 'priority': 0,
+      \ 'selector': 'textarea',
+      \ 'takeover': 'never',
+      \ },
+      \ }
+      \ }
 
 sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
