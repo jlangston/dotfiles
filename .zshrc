@@ -67,8 +67,6 @@ zplug load
 
 if [ -f $HOME/.zplug/repos/larkery/zsh-histdb/sqlite-history.zsh ]; then
   source $HOME/.zplug/repos/larkery/zsh-histdb/sqlite-history.zsh
-  autoload -Uz add-zsh-hook
-  add-zsh-hook precmd histdb-update-outcome
 fi
 
 # if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
