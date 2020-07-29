@@ -27,6 +27,12 @@ font pango:OperatorMonoLig Nerd Font 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# logout command
+set $logout wlogout --layout /etc/wlogout/user-loggedin
+
+# shutdown command
+set $shutdown wlogout --layout /etc/wlogout/user-loggedout --buttons-per-row 3
+
 # start a terminal
 set $term env KITTY_ENABLE_WAYLAND=1 kitty
 bindsym $mod+escape exec alacritty
@@ -148,13 +154,23 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
- bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-#
+#  bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec $logout
+
+# Media key bindings
+bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
+bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+
+# Screen brightness bindings
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+
+# capture PowerOff key
+bindsym XF86PowerOff exec $logout
 
 # Sreen brightness controls
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -328,9 +344,15 @@ default_border pixel
 
 #exec --no-startup-id /home/jefflangston/dev/github/i3-alternating-layout/alternating_layouts.py
 exec --no-startup-id swaybg -i /usr/share/backgrounds/$(ls /usr/share/backgrounds | shuf -n 1)
-exec swayidle -w \
-         timeout 90 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
-         resume 'swaymsg "output * dpms on"'
+
+set $idle swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 000000'
+
+exec $idle
+
 exec wl-paste -t text --watch clipman store
 
 output DP-3 pos 0 0 res 2560x1440 transform 90 transform 90
