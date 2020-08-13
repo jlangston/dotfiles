@@ -9,10 +9,7 @@ Plug  'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./inst
 Plug  'https://github.com/junegunn/fzf.vim'
 Plug  'https://github.com/alok/notational-fzf-vim'
 Plug  'https://github.com/mileszs/ack.vim'
-Plug  'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
-Plug  'https://github.com/jistr/vim-nerdtree-tabs.git'
-Plug  'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
-Plug  'https://github.com/Xuyuanp/nerdtree-git-plugin'
+Plug  'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug  'https://github.com/bling/vim-airline.git'
 Plug  'https://github.com/christoomey/vim-tmux-navigator'
 Plug  'https://github.com/benmills/vimux'
@@ -730,16 +727,16 @@ let g:tmuxline_preset = {
 
 
 " Nerdtree
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
-let NERDTreeKeepTreeInNewTab=1
-" let NERDTreeMapOpenInTab='<ENTER>'
-let g:nerdtree_tabs_open_on_gui_startup=0
-nnoremap <leader>nf :NERDTreeFind<CR>
+" let NERDTreeShowBookmarks=1
+" let NERDTreeChDirMode=0
+" let NERDTreeQuitOnOpen=1
+" let NERDTreeMouseMode=2
+" let NERDTreeShowHidden=1
+" let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
+" let NERDTreeKeepTreeInNewTab=1
+" " let NERDTreeMapOpenInTab='<ENTER>'
+" let g:nerdtree_tabs_open_on_gui_startup=0
+" nnoremap <leader>nf <cmd>CHAD<CR>
 
 "NeoFormat
 nnoremap <leader>nfm :Neoformat<CR>
