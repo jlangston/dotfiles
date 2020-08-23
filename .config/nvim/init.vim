@@ -368,7 +368,7 @@ endfunction
 nnoremap <leader>et :call ToggleJsxCssFt()<cr>
 
 "NerdTree
-map <C-k>b :NERDTreeToggle<CR>
+map <C-k>b :CHADopen<CR>
 
 nnoremap <leader>s :ToggleWorkspace<CR>
 

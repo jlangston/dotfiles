@@ -1,6 +1,6 @@
 yarn 1.19.1
 nodejs 12.13.0
-ruby 2.5.1
+ruby 2.6.6
 java openjdk-11.0.1
-golang 1.13
+golang 1.15
 
