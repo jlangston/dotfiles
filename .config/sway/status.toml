@@ -8,11 +8,8 @@ name = "awesome"
 # backlight_partial3 = "☀️ "\
 # backlight_full = "☀️ "\
 
-# [[block]]\
-# block = "pacman"\
-# \
-# [[block]]\
-# block = "backlight"
+[[block]]
+block = "backlight"
 
 [[block]]
 block = "music"
@@ -25,9 +22,9 @@ device = "DisplayDevice"
 driver = "upower"
 format = "{percentage}%"
 
-# [[block]]\
-# block = "net"\
-# device = "wlan0"\
+# [[block]]
+# block = "net"
+# device = "wlan0"
 # speed_down = true
 
 [[block]]
@@ -54,10 +51,13 @@ format_swap = "{SUp}%"
 block = "cpu"
 interval = 1
 
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
+
 [[block]]
-block = "load"
-interval = 1
-format = "{1m}"
+block = "pacman"
 
 [[block]]
 block = "sound"
