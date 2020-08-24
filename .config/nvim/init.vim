@@ -88,6 +88,8 @@ Plug 'https://github.com/AndrewRadev/splitjoin.vim'
 Plug 'https://github.com/mattn/webapi-vim'
 Plug 'https://github.com/pechorin/any-jump.nvim'
 Plug 'https://github.com/metakirby5/codi.vim'
+Plug 'https://github.com/tpope/vim-dadbod'
+Plug 'https://github.com/kristijanhusak/vim-dadbod-ui'
 
 
 Plug 'https://github.com/prettier/vim-prettier', {
