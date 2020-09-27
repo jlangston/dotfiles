@@ -107,6 +107,7 @@ bindsym $mod+shift+i fullscreen toggle worspace
 
 #print screen
 bindsym $mod+p exec sway-interactive-screenshot
+bindsym $mod+0 exec --no-startup-id swaybg -i /usr/share/backgrounds/$(ls /usr/share/backgrounds | shuf -n 1)
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
