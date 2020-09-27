@@ -29,6 +29,7 @@ floating_modifier $mod
 
 # start a terminal
 set $term env KITTY_ENABLE_WAYLAND=1 kitty
+bindsym $mod+escape exec alacritty
 bindsym $mod+Return exec kitty
 
 bindsym $mod+b exec vimb 

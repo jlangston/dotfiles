@@ -33,7 +33,6 @@ Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug  'https://github.com/kevinhwang91/rnvimr', {'do': 'make install'}
 Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
-Plug  'https://github.com/jceb/vim-orgmode'
 
 
 "Javascript
@@ -70,6 +69,7 @@ Plug  'https://github.com/godlygeek/tabular'
 Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/puremourning/vimspector'
 Plug 'https://github.com/liuchengxu/vista.vim'
@@ -110,6 +110,7 @@ Plug 'https://github.com/prettier/vim-prettier', {
       \ 'python',
       \ 'ruby',
       \ 'html',
+      \ 'eruby',
       \ 'swift' ] }
 
 
@@ -121,7 +122,8 @@ Plug  'https://github.com/jreybert/vimagit'
 Plug  'https://github.com/rhysd/git-messenger.vim'
 
 "GoLang
-Plug  'https://github.com/fatih/vim-go'
+" Plug  'https://github.com/fatih/vim-go'
+Plug 'sebdah/vim-delve'
 
 "Ruby
 Plug  'https://github.com/tpope/vim-rails', { 'for': 'ruby' }
@@ -867,8 +869,82 @@ sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
 " au BufWrite *.html.erb :Autoformat
 " au BufReadPost *.html set filetype=html.eruby
 " au BufReadPost *.plush set filetype=html.eruby
 " au BufReadPost *.md set filetype=markdown.eruby
 " au BufReadPost *.toml set filetype=toml.markdown.eruby
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,                    -- false will disable the whole extension
+      disable = { "tsx", "typescript", "javascript" }, -- list of language that will be disabled
+      custom_captures = {               -- mapping of user defined captures to highlight groups
+        -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
+      },
+    },
+    incremental_selection = {
+      enable = true,
+      disable = { "cpp", "lua" },
+      keymaps = {                       -- mappings for incremental selection (visual mappings)
+        init_selection = "gnn",         -- maps in normal mode to init the node/scope selection
+        node_incremental = "grn",       -- increment to the upper named parent
+        scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
+        node_decremental = "grm",       -- decrement to the previous node
+      }
+    },
+    refactor = {
+      highlight_definitions = {
+        enable = true
+      },
+      highlight_current_scope = {
+        enable = false
+      },
+      smart_rename = {
+        enable = true,
+        keymaps = {
+          smart_rename = "grr"          -- mapping to rename reference under cursor
+        }
+      },
+      navigation = {
+        enable = true,
+        keymaps = {
+          goto_definition = "gnd",      -- mapping to go to definition of symbol under cursor
+          list_definitions = "gnD"      -- mapping to list all definitions in current file
+        }
+      }
+    },
+    textobjects = { -- syntax-aware textobjects
+    enable = true,
+    disable = {},
+    keymaps = {
+        ["iL"] = { -- you can define your own textobjects directly here
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function"
+        },
+        -- or you use the queries from supported languages with textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["aC"] = "@class.outer",
+        ["iC"] = "@class.inner",
+        ["ac"] = "@conditional.outer",
+        ["ic"] = "@conditional.inner",
+        ["ae"] = "@block.outer",
+        ["ie"] = "@block.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+        ["is"] = "@statement.inner",
+        ["as"] = "@statement.outer",
+        ["ad"] = "@comment.outer",
+        ["am"] = "@call.outer",
+        ["im"] = "@call.inner"
+      }
+    },
+    ensure_installed = {"ruby", "rust", "python", "go", "html"} -- one of "all", "language", or a list of languages
+}
+EOF

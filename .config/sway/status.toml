@@ -16,6 +16,10 @@ interval = 20
 warning = 20.0
 alert = 10.0
 
+# [[block]]
+# block = "networkmanager"
+# on_click = "kitty -e nmtui"
+
 [[block]]
 block = "memory"
 display_type = "memory"
@@ -33,6 +37,14 @@ format = "{1m}"
 
 [[block]]
 block = "sound"
+
+[[block]]
+block = "speedtest"
+bytes = true
+interval = 4800
+
+[[block]]
+block = "pacman"
 
 [[block]]
 block = "time"
