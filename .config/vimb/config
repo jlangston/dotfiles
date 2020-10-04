@@ -67,6 +67,9 @@ nmap + zI
 nmap - zO
 nmap = zz
 
+#Reader mode
+nnoremap <C-R> :e! simplyread();<CR>
+
 # GUI color settings
 # Color scheme: Base16 Eighties (https://github.com/chriskempson/base16)
 set completion-css=color:#d3d0c8;background-color:#393939;font:12pt DejaVu Sans Mono;
