@@ -69,6 +69,9 @@ nmap = zz
 
 #Reader mode
 nnoremap <C-R> :e! simplyread();<CR>
+# vimium style maps
+nmap h <C-O>
+nmap l <C-I>
 
 # GUI color settings
 # Color scheme: Base16 Eighties (https://github.com/chriskempson/base16)
