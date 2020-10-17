@@ -30,11 +30,9 @@ Plug  'https://github.com/troydm/zoomwintab.vim'
 Plug  'https://github.com/simnalamburt/vim-mundo'
 Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug  'https://github.com/kevinhwang91/rnvimr', {'do': 'make install'}
 Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
 
 "Javascript
-Plug  'https://github.com/othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx'] }
 Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
 Plug  'https://github.com/Quramy/vim-js-pretty-template'
 Plug  'https://github.com/MaxMEllon/vim-jsx-pretty'
@@ -53,7 +51,6 @@ Plug 'https://github.com/hail2u/vim-css3-syntax'
 " Colors
 Plug  'https://github.com/lilydjwg/colorizer'
 Plug  'https://github.com/jlangston/vim-hybrid'
-Plug  'https://github.com/joshdick/onedark.vim'
 Plug  'https://github.com/vim-airline/vim-airline-themes'
 Plug  'https://github.com/chriskempson/base16-vim'
 Plug  'https://github.com/RRethy/vim-illuminate'
@@ -64,14 +61,13 @@ Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/completion-treesitter'
-Plug 'steelsojka/completion-buffers'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
-Plug 'https://github.com/puremourning/vimspector'
+Plug 'https://github.com/nvim-treesitter/completion-treesitter'
+Plug 'https://github.com/steelsojka/completion-buffers'
+Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'https://github.com/nvim-lua/completion-nvim'
+Plug 'https://github.com/nvim-lua/diagnostic-nvim'
+Plug 'https://github.com/RishabhRD/popfix'
+Plug 'https://github.com/RishabhRD/nvim-lsputils'
 Plug 'https://github.com/liuchengxu/vista.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
@@ -84,11 +80,8 @@ Plug 'https://github.com/janko-m/vim-test'
 Plug 'https://github.com/sbdchd/neoformat'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/AndrewRadev/splitjoin.vim'
-Plug 'https://github.com/mattn/webapi-vim'
 Plug 'https://github.com/pechorin/any-jump.nvim'
 Plug 'https://github.com/metakirby5/codi.vim'
-Plug 'https://github.com/tpope/vim-dadbod'
-Plug 'https://github.com/kristijanhusak/vim-dadbod-ui'
 
 
 Plug 'https://github.com/prettier/vim-prettier', {
@@ -362,13 +355,13 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-" set completion_chain_complete_list = {
-"       \ { complete_items = { 'lsp' } },
-"       \ { complete_items = { 'buffers' } },
-"       \ { mode = { '<c-p>' } },
-"       \ { mode = { '<c-n>' } }
-"       \ }
-
+let g:completion_chain_complete_list = {
+	    \'default' : [
+	    \    {'complete_items': ['lsp', 'buffers', 'snippet']},
+	    \    {'mode': '<c-p>'},
+	    \    {'mode': '<c-n>'}
+	    \]
+	    \}
 " Tree Sitter
 lua require'treesitter_config'
 
