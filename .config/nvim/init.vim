@@ -27,19 +27,14 @@ Plug  'https://github.com/roxma/vim-tmux-clipboard'
 Plug  'https://github.com/tpope/vim-repeat'
 Plug  'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug  'https://github.com/troydm/zoomwintab.vim'
-Plug  'https://github.com/mechatroner/rainbow_csv'
 Plug  'https://github.com/simnalamburt/vim-mundo'
 Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug  'https://github.com/kevinhwang91/rnvimr', {'do': 'make install'}
 Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
-Plug  'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-
 
 "Javascript
 Plug  'https://github.com/othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx'] }
-Plug  'https://github.com/othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript.jsx']}
-" Plug  'https://github.com/posva/vim-vue'
 Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
 Plug  'https://github.com/Quramy/vim-js-pretty-template'
 Plug  'https://github.com/MaxMEllon/vim-jsx-pretty'
@@ -71,7 +66,6 @@ Plug  'https://github.com/plasticboy/vim-markdown.git'
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/completion-treesitter'
 Plug 'steelsojka/completion-buffers'
-" Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
@@ -79,7 +73,6 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'https://github.com/puremourning/vimspector'
 Plug 'https://github.com/liuchengxu/vista.vim'
-" Plug 'https://github.com/w0rp/ale'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-unimpaired'
@@ -135,7 +128,6 @@ Plug 'sebdah/vim-delve'
 Plug  'https://github.com/tpope/vim-rails', { 'for': 'ruby' }
 Plug  'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug  'https://github.com/tpope/vim-bundler', { 'for': 'ruby' }
-" Plug 'https://github.com/tpope/vim-endwise', { 'for': 'ruby' }
 Plug  'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 "Varnish
@@ -274,19 +266,6 @@ noremap <silent> <C-S>  :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-"Normal Copy/Paste
-" vmap <C-c> "+yi
-" vmap <C-x> "+c
-" vmap <C-v> c<ESC>"+p
-" imap <C-v> <C-r><C-o>+
-" Yanks and copies to system clipboard
-" vnoremap <C-c> "*y
-" vnoremap y "*y
-" vnoremap <C-v> "+p
-" vnoremap p "*p
-" nnoremap ` <c-v>
-
-
 " Bubble single lines
 nmap <M-up> [e
 nmap <M-down> ]e
@@ -303,7 +282,7 @@ nnoremap <silent> vv <C-w>v
 :nnoremap <C-q> :bw<CR>
 nmap ; :Buffers<cr>
 
-"gita status
+"Vimagit status
 nnoremap <leader>g :Magit<CR>
 nnoremap <leader>gs :MagitOnly<CR>
 let g:magit_discard_untracked_do_delete=1
@@ -315,28 +294,6 @@ nnoremap <C-w>z :ZoomWinTabToggle<CR>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
 vnoremap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
-
-"ALE
-"" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-let g:ale_fixers = {
-      \  'javascript': ['eslint'],
-      \  'typescript': ['tslint'],
-      \  'vue': ['eslint']
-      \}
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_linters = {
-      \  'javascript': ['eslint'],
-      \  'typescript': ['tslint'],
-      \  'vue': ['eslint'],
-      \  'go': ['gometalinter', 'goimports']
-      \}
-" let g:ale_linter_aliases = {'vue': ['css', 'javascript', 'typescript']}
-let g:ale_linter_aliases = {'vue': 'typescript'}
 
 autocmd FileType vue syntax sync fromstart
 autocmd FileType *.scss syntax sync fromstart
@@ -384,128 +341,8 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 
 "Vista
 nmap <C-k>o :Vista!!<CR>
-let g:vista_default_executive = 'vim_lsp'
-
-"coc
-" let g:coc_global_extensions = [
-"       \ 'coc-vimlsp',
-"       \ 'coc-tsserver',
-"       \ 'coc-vetur',
-"       \ 'coc-rls',
-"       \ 'coc-eslint', 
-"       \ 'coc-prettier',
-"       \ 'coc-json',
-"       \ 'coc-solargraph',
-"       \ 'coc-python',
-"       \ ]
-" nmap <C-k>l :CocList<CR>
-" "
-" " if hidden is not set, TextEdit might fail.
-" set hidden
-"
-" " Better display for messages
-" set cmdheight=2
-"
-" " Smaller updatetime for CursorHold & CursorHoldI
-" set updatetime=300
-"
-" " don't give |ins-completion-menu| messages.
-" set shortmess+=c
-"
-" " always show signcolumns
-" set signcolumn=yes
-"
-" " Use tab for trigger completion with characters ahead and navigate.
-" " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" " Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
-"
-" " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" " Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
-"
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-"
-" " Use K for show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-" function! s:show_documentation()
-"   if &filetype == 'vim'
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-" " Remap for rename current word
-" nmap <leader>gr <Plug>(coc-rename)
-"
-" " Remap for format selected region
-" vmap <leader>fm  <Plug>(coc-format-selected)
-" nmap <leader>fm  <Plug>(coc-format-selected)
-"
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
-"
-" " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" vmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-"
-" " Remap for do codeAction of current line
-" nmap <leader>ac  <Plug>(coc-codeaction)
-" " Fix autofix problem of current line
-" nmap <leader>qf  <Plug>(coc-fix-current)
-"
-" " Use `:Format` for format current buffer
-" command! -nargs=0 Format :call CocAction('format')
-"
-" " Use `:Fold` for fold current buffer
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-"
-"
-" " Using CocList
-" " Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
-" nnoremap <silent> t :<C-u>Vista finder<cr>
-" " Search workspace symbols
-" nnoremap <silent> T  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" " Resume latest coc list
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> t :<C-u>Vista finder<cr>
+let g:vista_default_executive = 'nvim_lsp'
 
 " LSP Nvim 
 lua require'lsp_config'
@@ -523,12 +360,12 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-set completion_chain_complete_list = {
-      \ { complete_items = { 'lsp' } },
-      \ { complete_items = { 'buffers' } },
-      \ { mode = { '<c-p>' } },
-      \ { mode = { '<c-n>' } }
-      \ }
+" set completion_chain_complete_list = {
+"       \ { complete_items = { 'lsp' } },
+"       \ { complete_items = { 'buffers' } },
+"       \ { mode = { '<c-p>' } },
+"       \ { mode = { '<c-n>' } }
+"       \ }
 
 " Tree Sitter
 lua require'treesitter_config'
