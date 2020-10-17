@@ -353,6 +353,8 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " nmap <tab> <Plug>(completion_smart_tab)
 " nmap <s-tab> <Plug>(completion_smart_s_tab)
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_virtual_text_prefix = ' '
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
