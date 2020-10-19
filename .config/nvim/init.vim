@@ -65,6 +65,7 @@ Plug 'https://github.com/nvim-treesitter/completion-treesitter'
 Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'https://github.com/nvim-lua/completion-nvim'
+Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'https://github.com/nvim-lua/diagnostic-nvim'
 Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-lsputils'
@@ -346,8 +347,9 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " nmap <tab> <Plug>(completion_smart_tab)
 " nmap <s-tab> <Plug>(completion_smart_s_tab)
-let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_enable_virtual_text = 0
 let g:diagnostic_virtual_text_prefix = ' '
+let g:completion_enable_snippet = 'UltiSnips'
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -357,7 +359,7 @@ set shortmess+=c
 
 let g:completion_chain_complete_list = {
 	    \'default' : [
-	    \    {'complete_items': ['lsp', 'buffers', 'snippet']},
+	    \    {'complete_items': ['lsp', 'snippet', 'tabnine', 'buffers']},
 	    \    {'mode': '<c-p>'},
 	    \    {'mode': '<c-n>'}
 	    \]

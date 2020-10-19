@@ -1,6 +1,6 @@
 local nvim_lsp = require'nvim_lsp'
 
-on_attach = function(_, buffnr)
+On_attach = function(_, bufnr)
   require'completion'.on_attach()
   require'diagnostic'.on_attach()
 
@@ -54,25 +54,28 @@ vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handl
 --   }
 -- }
 --
-nvim_lsp.solargraph.setup{on_attach=on_attach}
+nvim_lsp.solargraph.setup{on_attach=On_attach}
 
 --C++ config
 -- nvim_lsp.clangd.setup{on_attach=on_attach}
 
 --VimLang config
-nvim_lsp.vimls.setup{on_attach=on_attach}
+nvim_lsp.vimls.setup{on_attach=On_attach}
 
 --Lua config
-nvim_lsp.sumneko_lua.setup{on_attach=on_attach}
+nvim_lsp.sumneko_lua.setup{on_attach=On_attach}
 
 --Javascript/Typescript
-nvim_lsp.tsserver.setup{on_attach=on_attach}
+nvim_lsp.tsserver.setup{on_attach=On_attach}
 
 --Html
-nvim_lsp.html.setup{on_attach=on_attach}
+nvim_lsp.html.setup{on_attach=On_attach}
 
 --Rust
-nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
+nvim_lsp.rust_analyzer.setup{on_attach=On_attach}
 
 --go
-nvim_lsp.gopls.setup{on_attach=on_attach}
+nvim_lsp.gopls.setup{on_attach=On_attach}
+
+-- Terraform
+nvim_lsp.terraformls.setup{on_attach=On_attach}
