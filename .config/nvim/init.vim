@@ -356,10 +356,10 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-
+" \    {'complete_items': ['lsp', 'snippet', 'tabnine', 'buffers']},
 let g:completion_chain_complete_list = {
 	    \'default' : [
-	    \    {'complete_items': ['lsp', 'snippet', 'tabnine', 'buffers']},
+	    \    {'complete_items': ['lsp', 'snippet', 'tabnine']},
 	    \    {'mode': '<c-p>'},
 	    \    {'mode': '<c-n>'}
 	    \]

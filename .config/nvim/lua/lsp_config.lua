@@ -79,3 +79,6 @@ nvim_lsp.gopls.setup{on_attach=On_attach}
 
 -- Terraform
 nvim_lsp.terraformls.setup{on_attach=On_attach}
+
+-- Docker
+nvim_lsp.dockerls.setup{on_attach=On_attach}
