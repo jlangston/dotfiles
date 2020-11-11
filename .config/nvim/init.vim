@@ -146,12 +146,14 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 if &term == "xterm"
   set term=xterm-256color
 endif
+set background=dark
 if (has("termguicolors"))
   set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+    hi! Normal ctermbg=NONE guibg=NONE
 endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-set background=dark
 set number
 set mouse=a
 set mousehide
@@ -338,7 +340,7 @@ nmap <C-k>o :Vista!!<CR>
 nnoremap <silent> t :<C-u>Vista finder<cr>
 let g:vista_default_executive = 'nvim_lsp'
 
-" LSP Nvim 
+" LSP Nvim
 lua require'lsp_config'
 
 "Completion.nvim
