@@ -1,4 +1,4 @@
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require'lspconfig'
 
 On_attach = function(_, bufnr)
   require'completion'.on_attach()

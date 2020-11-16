@@ -61,8 +61,8 @@ Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-Plug 'https://github.com/nvim-treesitter/completion-treesitter'
-Plug 'https://github.com/steelsojka/completion-buffers'
+" Plug 'https://github.com/nvim-treesitter/completion-treesitter'
+" Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'https://github.com/nvim-lua/completion-nvim'
 Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
@@ -548,7 +548,7 @@ let g:delimitMate_expand_space = 1
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
+" nnoremap <esc>^[ <esc>^[
 
 "Indent Lines
 let g:indentLine_enabled = 1
