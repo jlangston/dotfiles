@@ -2,7 +2,6 @@ local nvim_lsp = require'lspconfig'
 
 On_attach = function(_, bufnr)
   require'completion'.on_attach()
-  require'diagnostic'.on_attach()
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -24,8 +23,8 @@ On_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-]>', '<cmd>lua NextDiagnosticCycle<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-[>', '<cmd>lua PrevDiagnosticCycle<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-]>', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-[>', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>', opts)
 end
 
 vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
@@ -36,6 +35,23 @@ vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.ty
 vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
 vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
 vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
+
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--     -- This will disable virtual text, like doing:
+--     -- let g:diagnostic_enable_virtual_text = 0
+--     virtual_text = false,
+--     -- This is similar to:
+--     -- let g:diagnostic_show_sign = 1
+--     -- To configure sign display,
+--     --  see: ":help vim.lsp.diagnostic.set_signs()"
+--     signs = true,
+--     -- This is similar to:
+--     -- "let g:diagnostic_insert_delay = 1"
+--     update_in_insert = false,
+--   }
+-- )
 
 --Python Config
 -- nvim_lsp.pyls.setup{
