@@ -23,8 +23,8 @@ On_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-]>', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-[>', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><c-[>', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><c-]>', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>', opts)
 end
 
 vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
