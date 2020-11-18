@@ -64,7 +64,7 @@ Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 " Plug 'https://github.com/nvim-treesitter/completion-treesitter'
 " Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'https://github.com/nvim-lua/completion-nvim', { 'branch': '3b6774e' }
+Plug 'https://github.com/nvim-lua/completion-nvim'
 Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-lsputils'
