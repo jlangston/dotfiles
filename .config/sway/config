@@ -332,7 +332,7 @@ default_border pixel
 #exec --no-startup-id /home/jefflangston/dev/github/i3-alternating-layout/alternating_layouts.py
 exec --no-startup-id swaybg -m stretch -i /usr/share/backgrounds/$(ls /usr/share/backgrounds | shuf -n 1)
 exec swayidle -w \
-         timeout 90 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+         timeout 11 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
          resume 'swaymsg "output * dpms on"'
 exec wl-paste -t text --watch clipman store
 

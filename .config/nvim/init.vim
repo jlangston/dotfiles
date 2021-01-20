@@ -31,6 +31,7 @@ Plug  'https://github.com/simnalamburt/vim-mundo'
 Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
+Plug 'https://github.com/lambdalisue/suda.vim'
 
 "Javascript
 Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
@@ -64,6 +65,8 @@ Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 " Plug 'https://github.com/nvim-treesitter/completion-treesitter'
 " Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'https://github.com/prabirshrestha/vim-lsp'
+Plug 'https://github.com/mattn/vim-lsp-settings'
 Plug 'https://github.com/nvim-lua/completion-nvim'
 Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'https://github.com/RishabhRD/popfix'

@@ -36,6 +36,40 @@ vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.im
 vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
 vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
+local border_chars = {
+	TOP_LEFT = '┌',
+	TOP_RIGHT = '┐',
+	MID_HORIZONTAL = '─',
+	MID_VERTICAL = '│',
+	BOTTOM_LEFT = '└',
+	BOTTOM_RIGHT = '┘',
+}
+vim.g.lsp_utils_location_opts = {
+	height = 24,
+	mode = 'editor',
+	preview = {
+		title = 'Location Preview',
+		border = true,
+		border_chars = border_chars
+	},
+	keymaps = {
+		n = {
+			['C-n>'] = 'j',
+			['<C-p>'] = 'k',
+		}
+	}
+}
+vim.g.lsp_utils_symbols_opts = {
+	height = 24,
+	mode = 'editor',
+	preview = {
+		title = 'Symbols Preview',
+		border = true,
+		border_chars = border_chars
+	},
+	prompt = {},
+}
+
 
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -78,8 +112,6 @@ nvim_lsp.solargraph.setup{on_attach=On_attach}
 --VimLang config
 nvim_lsp.vimls.setup{on_attach=On_attach}
 
---Lua config
-nvim_lsp.sumneko_lua.setup{on_attach=On_attach}
 
 --Javascript/Typescript
 nvim_lsp.tsserver.setup{on_attach=On_attach}
@@ -98,3 +130,45 @@ nvim_lsp.terraformls.setup{on_attach=On_attach}
 
 -- Docker
 nvim_lsp.dockerls.setup{on_attach=On_attach}
+
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+--Lua config
+  on_attach = On_attach;
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
+}

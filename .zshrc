@@ -155,7 +155,7 @@ alias vim='nvim';
 alias vi='nvim';
 alias v='nvim';
 export EDITOR='nvim';
-
+alias emacs='emacs -nw'
 alias r='TERM=xterm-kitty ranger';
 
 # Customize to your needs...
