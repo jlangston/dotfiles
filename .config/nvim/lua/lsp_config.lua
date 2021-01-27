@@ -1,135 +1,88 @@
 local nvim_lsp = require'lspconfig'
+local vim = vim
 
-On_attach = function(_, bufnr)
-  require'completion'.on_attach()
+vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-k>', '<Cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gd','<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','K','<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gr','<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>gr','<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><c-[>', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><c-]>', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>', opts)
+
+---- icons
+local w_sign = ""
+local e_sign = ""
+local h_sign = "ﯦ"
+
+---- hilight
+vim.fn.sign_define("LspDiagnosticsSignError", {text = e_sign, texthl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = w_sign, texthl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = h_sign, texthl = "LspDiagnosticsSignHint"})
+
+vim.cmd [[highlight! link LspDiagnosticsDefaultError Red]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
+
+---- saga
+local saga = require 'lspsaga'
+local saga_opts = {
+  error_sign = e_sign,
+  warn_sign = w_sign,
+  hint_sign = h_sign,
+  code_action_icon = ' ',
+  finder_definition_icon = '  ',
+  finder_reference_icon = '  ',
+  definition_preview_icon = '  ',
+  border_style = 1,
+  max_hover_width = 0
+}
+
+saga.init_lsp_saga(saga_opts)
+
+-- dignostic
+vim.lsp.diagnostic.set_signs()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    underline = false,
+    -- This is similar to:
+    -- let g:diagnostic_show_sign = 1
+    -- To configure sign display,
+    --  see: ":help vim.lsp.diagnostic.set_signs()"
+    signs = true,
+
+    -- This is similar to:
+    -- "let g:diagnostic_insert_delay = 1"
+    update_in_insert = false,
+  }
+)
+
+-- completion
+local completion_chain_complete_list = {
+  {
+    ["complete_items"] = {"lsp", "path", "buffer"},
+  }
+}
+vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
+
+-- keymap
+local keymap_lsp_func = {
+  gd = "vim.lsp.buf.definition()",
+  -- gD = "require'lspsaga.provider'.preview_definiton()",
+  -- gd = "require'lspsaga.provider'.lsp_finder()",
+  gi = "vim.lsp.buf.implementation()",
+  K = "require'lspsaga.hover'.render_hover_doc()",
+  gt = "vim.lsp.buf.references()",
+  gr = "require('lspsaga.rename').rename()",
+  gD = "require'lspsaga.provider'.lsp_finder()",
+  ca = "require'lspsaga.codeaction'.code_action()",
+  ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",
+  ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
+  et = "require'lspsaga.floaterm'.open_float_terminal()",
+  qt = "require'lspsaga.floaterm'.close_float_terminal()",
+  ti = "require'lspsaga.floaterm'.open_float_terminal('gitui')"
+}
+
+local opts = { noremap=true, silent=true }
+for k, v in pairs(keymap_lsp_func) do
+  vim.api.nvim_set_keymap('n', k, string.format("<cmd>lua %s<CR>", v), opts)
 end
-
-vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
-
-local border_chars = {
-	TOP_LEFT = '┌',
-	TOP_RIGHT = '┐',
-	MID_HORIZONTAL = '─',
-	MID_VERTICAL = '│',
-	BOTTOM_LEFT = '└',
-	BOTTOM_RIGHT = '┘',
-}
-vim.g.lsp_utils_location_opts = {
-	height = 24,
-	mode = 'editor',
-	preview = {
-		title = 'Location Preview',
-		border = true,
-		border_chars = border_chars
-	},
-	keymaps = {
-		n = {
-			['C-n>'] = 'j',
-			['<C-p>'] = 'k',
-		}
-	}
-}
-vim.g.lsp_utils_symbols_opts = {
-	height = 24,
-	mode = 'editor',
-	preview = {
-		title = 'Symbols Preview',
-		border = true,
-		border_chars = border_chars
-	},
-	prompt = {},
-}
-
-
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, {
---     -- This will disable virtual text, like doing:
---     -- let g:diagnostic_enable_virtual_text = 0
---     virtual_text = false,
---     -- This is similar to:
---     -- let g:diagnostic_show_sign = 1
---     -- To configure sign display,
---     --  see: ":help vim.lsp.diagnostic.set_signs()"
---     signs = true,
---     -- This is similar to:
---     -- "let g:diagnostic_insert_delay = 1"
---     update_in_insert = false,
---   }
--- )
-
---Python Config
--- nvim_lsp.pyls.setup{
---   on_attach=on_attach;
---   settings = {
---     pyls = {
---       plugins = {
---         pycodestyle = {
---           enabled = false;
---         };
---         pyls_mypy = {
---           enabled = false;
---         };
---       }
---     }
---   }
--- }
---
-nvim_lsp.solargraph.setup{on_attach=On_attach}
-
---C++ config
--- nvim_lsp.clangd.setup{on_attach=on_attach}
-
---VimLang config
-nvim_lsp.vimls.setup{on_attach=On_attach}
-
-
---Javascript/Typescript
-nvim_lsp.tsserver.setup{on_attach=On_attach}
-
---Html
-nvim_lsp.html.setup{on_attach=On_attach}
-
---Rust
-nvim_lsp.rust_analyzer.setup{on_attach=On_attach}
-
---go
-nvim_lsp.gopls.setup{on_attach=On_attach}
-
--- Terraform
-nvim_lsp.terraformls.setup{on_attach=On_attach}
-
--- Docker
-nvim_lsp.dockerls.setup{on_attach=On_attach}
 
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -146,10 +99,8 @@ end
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
-require'lspconfig'.sumneko_lua.setup {
+nvim_lsp.sumneko_lua.setup {
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
---Lua config
-  on_attach = On_attach;
   settings = {
     Lua = {
       runtime = {
@@ -172,3 +123,56 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+--Python Config
+-- nvim_lsp.pyls.setup{
+--   on_attach=on_attach;
+--   settings = {
+--     pyls = {
+--       plugins = {
+--         pycodestyle = {
+--           enabled = false;
+--         };
+--         pyls_mypy = {
+--           enabled = false;
+--         };
+--       }
+--     }
+--   }
+-- }
+--
+
+--C++ config
+-- nvim_lsp.clangd.setup{on_attach=on_attach}
+
+--VimLang config
+nvim_lsp.vimls.setup{}
+
+--Lua config
+-- nvim_lsp.sumneko_lua.setup{}
+
+--Javascript/Typescript
+nvim_lsp.tsserver.setup{}
+
+-- Ruby
+nvim_lsp.solargraph.setup{}
+
+--Html
+nvim_lsp.html.setup{}
+
+--Rust
+nvim_lsp.rust_analyzer.setup{
+  cmd = {"rust-analyzer"}
+}
+
+--go
+nvim_lsp.gopls.setup{}
+
+-- Terraform
+nvim_lsp.terraformls.setup{}
+
+-- Docker
+nvim_lsp.dockerls.setup{}
+
+--typescript
+nvim_lsp.tsserver.setup{}

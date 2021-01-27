@@ -36,11 +36,9 @@ Plug 'https://github.com/lambdalisue/suda.vim'
 "Javascript
 Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
 Plug  'https://github.com/Quramy/vim-js-pretty-template'
-Plug  'https://github.com/MaxMEllon/vim-jsx-pretty'
 Plug  'https://github.com/jparise/vim-graphql'
-
-"Typescript
-Plug 'https://github.com/leafgarland/typescript-vim'
+"
+" "Typescript
 Plug 'https://github.com/peitalin/vim-jsx-typescript'
 Plug 'https://github.com/HerringtonDarkholme/yats.vim'
 
@@ -65,12 +63,10 @@ Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 " Plug 'https://github.com/nvim-treesitter/completion-treesitter'
 " Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'https://github.com/prabirshrestha/vim-lsp'
-Plug 'https://github.com/mattn/vim-lsp-settings'
+Plug 'https://github.com/alexaandru/nvim-lspupdate', {'branch': 'main'}
+Plug 'https://github.com/glepnir/lspsaga.nvim', {'branch': 'main'}
 Plug 'https://github.com/nvim-lua/completion-nvim'
 Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
-Plug 'https://github.com/RishabhRD/popfix'
-Plug 'https://github.com/RishabhRD/nvim-lsputils'
 Plug 'https://github.com/liuchengxu/vista.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
@@ -344,6 +340,9 @@ let g:vista_default_executive = 'nvim_lsp'
 
 " LSP Nvim
 lua require'lsp_config'
+let g:lsp_diagnostics_virtual_text_enabled = 0
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
 
 "Completion.nvim
 " Use <Tab> and <S-Tab> to navigate through popup menu

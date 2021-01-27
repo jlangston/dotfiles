@@ -65,5 +65,5 @@ require'nvim-treesitter.configs'.setup {
         ["im"] = "@call.inner"
       }
     },
-    ensure_installed = {"ruby", "rust", "python", "go", "html"} -- one of "all", "language", or a list of languages
+    ensure_installed = {"ruby", "rust", "python", "go",  "html", "typescript", "tsx", "css", "json"} -- one of "all", "language", or a list of languages
 }
