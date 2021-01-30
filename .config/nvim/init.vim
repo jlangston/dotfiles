@@ -5,9 +5,10 @@ let g:python_host_skip_check=1
 call plug#begin('~/.config/nvim/plugged')
 
 "Util
-Plug  'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug  'https://github.com/junegunn/fzf.vim'
-Plug  'https://github.com/alok/notational-fzf-vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-github.nvim'
 Plug  'https://github.com/mileszs/ack.vim'
 Plug  'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug  'https://github.com/bling/vim-airline.git'
@@ -79,7 +80,6 @@ Plug 'https://github.com/janko-m/vim-test'
 Plug 'https://github.com/sbdchd/neoformat'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/AndrewRadev/splitjoin.vim'
-Plug 'https://github.com/pechorin/any-jump.nvim'
 Plug 'https://github.com/metakirby5/codi.vim'
 
 
@@ -271,10 +271,9 @@ vmap <M-down> ]egv
 nnoremap <silent> vv <C-w>v
 
 " Buffer cycle
-:nnoremap gb :bnext<CR>
-:nnoremap gB :bprevious<CR>
-:nnoremap <C-q> :bw<CR>
-nmap ; :Buffers<cr>
+nnoremap gb :bnext<CR>
+nnoremap gB :bprevious<CR>
+nnoremap <C-q> :bw<CR>
 
 "Vimagit status
 nnoremap <leader>g :Magit<CR>
@@ -335,13 +334,13 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 
 "Vista
 nmap <C-k>o :Vista!!<CR>
-nnoremap <silent> t :<C-u>Vista finder<cr>
+" nnoremap <silent> t :<C-u>Vista finder<cr>
 let g:vista_default_executive = 'nvim_lsp'
 
 " LSP Nvim
 lua require'lsp_config'
-let g:lsp_diagnostics_virtual_text_enabled = 0
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+lua require'finder'
 
 
 "Completion.nvim
@@ -381,116 +380,6 @@ if &diff
   map <leader>2 :diffget BASE<CR>
   map <leader>3 :diffget REMOTE<CR>
 endif
-
-" FZF
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-nnoremap <Leader>f :Rg<cr>
-nmap <C-p> :Files<cr>
-
-command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>,
-      \           <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \  <bang>0)
-
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
-
-" Terminal buffer options for fzf
-autocmd! FileType fzf
-autocmd  FileType fzf set noshowmode noruler nonu
-
-if has('nvim') && exists('&winblend') && &termguicolors
-  set winblend=20
-
-  hi NormalFloat guibg=None
-  if exists('g:fzf_colors.bg')
-    call remove(g:fzf_colors, 'bg')
-  endif
-
-  if stridx($FZF_DEFAULT_OPTS, '--border') == -1
-    let $FZF_DEFAULT_OPTS .= ' --border'
-  endif
-
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-endif
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
-
-" REQUIRED FOR LAZYGIT
-" Creates a floating window with a most recent buffer to be used
-function! CreateCenteredFloatingWindow()
-  let width = float2nr(&columns * 0.9)
-  let height = float2nr(&lines * 0.9)
-  let top = ((&lines - height) / 2) - 1
-  let left = (&columns - width) / 2
-  let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
-
-  let top = "╭" . repeat("─", width - 2) . "╮"
-  let mid = "│" . repeat(" ", width - 2) . "│"
-  let bot = "╰" . repeat("─", width - 2) . "╯"
-  let lines = [top] + repeat([mid], height - 2) + [bot]
-  let s:buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  call nvim_open_win(s:buf, v:true, opts)
-  set winhl=Normal:Floating
-  let opts.row += 1
-  let opts.height -= 2
-  let opts.col += 2
-  let opts.width -= 4
-  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-  autocmd BufWipeout <buffer> exe 'bwipeout '.s:buf
-endfunction
-
-" When term starts, auto go into insert mode
-autocmd TermOpen * startinsert
-
-" Turn off line numbers etc
-autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-
-function! ToggleTerm(cmd)
-  if empty(bufname(a:cmd))
-    call CreateCenteredFloatingWindow()
-    call termopen(a:cmd, { 'on_exit': function('OnTermExit') })
-  else
-    bwipeout!
-  endif
-endfunction
-
-function! ToggleLazyGit()
-  call ToggleTerm('lazygit')
-endfunction
-
-function! OnTermExit(job_id, code, event) dict
-  if a:code == 0
-    bwipeout!
-  endif
-endfunction
-
-" REQUIRED FOR LAZYGIT
-nnoremap <silent> <Leader>lg :call ToggleLazyGit()<CR>
-
-tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
-nnoremap <silent> <M-o> :RnvimrToggle<CR>
-tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
-
 
 " Comment lines with cmd+/
 map <C-/> :TComment<cr>
