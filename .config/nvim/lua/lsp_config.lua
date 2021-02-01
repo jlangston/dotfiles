@@ -29,8 +29,7 @@ local saga_opts = {
   finder_definition_icon = '  ',
   finder_reference_icon = '  ',
   definition_preview_icon = '  ',
-  border_style = 1,
-  max_hover_width = 0
+  border_style = 1
 }
 
 saga.init_lsp_saga(saga_opts)
