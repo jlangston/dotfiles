@@ -35,6 +35,7 @@ Plug  'https://github.com/wincent/replay'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
 Plug 'https://github.com/lambdalisue/suda.vim'
+Plug 'jmckiern/vim-venter'
 
 "Javascript
 Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
@@ -63,21 +64,20 @@ Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-" Plug 'https://github.com/nvim-treesitter/completion-treesitter'
-" Plug 'https://github.com/steelsojka/completion-buffers'
 Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'https://github.com/hrsh7th/nvim-compe'
+Plug 'https://github.com/hrsh7th/vim-vsnip-integ'
 Plug 'https://github.com/alexaandru/nvim-lspupdate', {'branch': 'main'}
 Plug 'https://github.com/glepnir/lspsaga.nvim', {'branch': 'main'}
-Plug 'https://github.com/nvim-lua/completion-nvim'
-Plug 'https://github.com/aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'https://github.com/liuchengxu/vista.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-unimpaired'
 Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/mattn/emmet-vim'
-Plug 'https://github.com/SirVer/ultisnips'
-Plug 'https://github.com/honza/vim-snippets'
+" Plug 'https://github.com/SirVer/ultisnips'
+" Plug 'https://github.com/honza/vim-snippets'
+Plug 'https://github.com/hrsh7th/vim-vsnip'
 Plug 'https://github.com/janko-m/vim-test'
 Plug 'https://github.com/sbdchd/neoformat'
 Plug 'https://github.com/kana/vim-textobj-user'
@@ -219,6 +219,7 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 " Quickly open/reload vim
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>vt :VenterToggle<CR>
 "Enter Command Mode with space
 nmap <space> :
 " Sudo save
@@ -349,23 +350,18 @@ lua require'finder'
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 " nmap <tab> <Plug>(completion_smart_tab)
 " nmap <s-tab> <Plug>(completion_smart_s_tab)
-let g:completion_enable_snippet = 'UltiSnips'
+" let g:completion_enable_snippet = 'UltiSnips'
 
 " Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-" \    {'complete_items': ['lsp', 'snippet', 'tabnine', 'buffers']},
-let g:completion_chain_complete_list = {
-	    \'default' : [
-	    \    {'complete_items': ['lsp', 'snippet', 'tabnine']},
-	    \    {'mode': '<c-p>'},
-	    \    {'mode': '<c-n>'}
-	    \]
-	    \}
 " Tree Sitter
 lua require'treesitter_config'
 
@@ -478,6 +474,9 @@ let g:airline#extensions#branch#enabled     = 1
 let g:hybrid_custom_term_colors = 1
 "let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tmuxline#enabled  = 1
+let g:airline#extensions#nvimlsp#enabled = 1
+" let g:airline#extensions#nvimlsp#error_symbol = 'E'
+" let g:airline#extensions#nvimlsp#warning_symbol = 'W'
 
 " Tmuxline config
 let g:tmuxline_preset = {

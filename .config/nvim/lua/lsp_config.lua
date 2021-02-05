@@ -1,8 +1,6 @@
 local nvim_lsp = require'lspconfig'
 local vim = vim
 
-vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
-
 
 ---- icons
 local w_sign = ""
@@ -53,12 +51,40 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- completion
-local completion_chain_complete_list = {
-  {
-    ["complete_items"] = {"lsp", "path", "buffer"},
-  }
+vim.o.completeopt = "menu,menuone,noselect"
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
 }
-vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.rust_analyzer.setup {
+  capabilities = capabilities,
+}
 
 -- keymap
 local keymap_lsp_func = {
