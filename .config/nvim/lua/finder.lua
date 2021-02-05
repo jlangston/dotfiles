@@ -31,6 +31,7 @@ local keymap_telescope_func = {
   ["<C-p>"] = "require'telescope.builtin'.find_files()",
   ["<Leader>f"] = "require'telescope.builtin'.live_grep()",
   ["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
+  ["t"] = "require'telescope.builtin'.lsp_document_symbols()",
   [";"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
   -- ["<Leader>gi"] = "require'telescope.builtin'.extensions.issues()",
   -- ["<Leader>gp"] = "require'telescope.builtin'.extensions.pull_request()",
