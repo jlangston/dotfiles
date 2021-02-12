@@ -37,8 +37,10 @@ local keymap_telescope_func = {
   -- ["<Leader>gp"] = "require'telescope.builtin'.extensions.pull_request()",
   -- ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
   ["<Leader>gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
+  [","] = "require'hop'.hint_words()"
 }
 
 for k, v in pairs(keymap_telescope_func) do
   vim.api.nvim_set_keymap('n', k, string.format("<cmd> lua %s<CR>", v), opts)
 end
+
