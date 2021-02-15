@@ -201,3 +201,18 @@ nvim_lsp.dockerls.setup{}
 
 --typescript
 nvim_lsp.tsserver.setup{}
+
+--yaml
+nvim_lsp.yamlls.setup{
+  cmd = {"yaml-language-server", "--stdio"},
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = true
+      },
+      schemas = {
+        kubernetes = "/*.yaml";
+      }
+    }
+  }
+}
