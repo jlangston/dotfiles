@@ -29,8 +29,8 @@ floating_modifier $mod
 
 # start a terminal
 set $term env KITTY_ENABLE_WAYLAND=1 kitty
-bindsym $mod+escape exec alacritty
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
+bindsym $mod+escape exec kitty
 
 bindsym $mod+b exec vimb 
 
@@ -345,3 +345,14 @@ input "1133:50184:Logitech_USB_Trackball" {
   scroll_button 273
   pointer_accel 1
 }
+
+input 1155:22288:STMicroelectronics_obins_anne_keyboard {
+ #xkb_options ctrl:nocaps
+ xkb_options ctrl:swap_lwin_lctl,caps:escape
+} 
+
+
+input 13:0:ANNE_KB_L0_5CA8 {
+ #xkb_options ctrl:nocaps
+ xkb_options ctrl:swap_lwin_lctl,caps:escape
+} 

@@ -12,3 +12,4 @@
 .config/vimb/cookies.db
 .config/vimb/command
 .config/kitty/kitty-themes/
+.config/ranger/__pycache__/*
