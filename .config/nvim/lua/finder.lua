@@ -4,7 +4,7 @@ local telescope = require'telescope'
 local actions = require'telescope.actions'
 
 -- extensions
--- telescope.load_extension('gh')
+telescope.load_extension('octo')
 
 telescope.setup{
   defaults = {

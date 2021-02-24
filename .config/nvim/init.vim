@@ -11,7 +11,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " Plug  'oberblastmeister/neuron.nvim'
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'nvim-telescope/telescope-github.nvim'
+Plug  'https://github.com/pwntester/octo.nvim'
 Plug  'https://github.com/mileszs/ack.vim'
 Plug  'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug  'https://github.com/bling/vim-airline.git'
@@ -613,7 +613,7 @@ sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " au BufWrite *.html.erb :Autoformat
 " au BufReadPost *.html set filetype=html.eruby
