@@ -3,6 +3,8 @@ local vim = vim
 local telescope = require'telescope'
 local actions = require'telescope.actions'
 
+require"hop".setup {}
+
 -- extensions
 telescope.load_extension('octo')
 

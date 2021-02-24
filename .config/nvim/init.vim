@@ -11,7 +11,8 @@ Plug 'nvim-telescope/telescope.nvim'
 " Plug  'oberblastmeister/neuron.nvim'
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug  'https://github.com/pwntester/octo.nvim'
+Plug  'https://github.com/tpope/vim-repeat'
+Plug  'https://github.com/tpope/vim-unimpaired'
 Plug  'https://github.com/mileszs/ack.vim'
 Plug  'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug  'https://github.com/bling/vim-airline.git'
@@ -23,18 +24,12 @@ Plug  'https://github.com/Valloric/MatchTagAlways.git'
 Plug  'https://github.com/Raimondi/delimitMate.git'
 Plug  'https://github.com/phaazon/hop.nvim'
 Plug  'https://github.com/thaerkh/vim-workspace'
-Plug  'https://github.com/vim-utils/vim-husk'
 Plug  'https://github.com/ryanoasis/vim-devicons'
 Plug  'https://github.com/djoshea/vim-autoread'
-Plug  'https://github.com/inside/vim-search-pulse'
 Plug  'https://github.com/roxma/vim-tmux-clipboard'
-Plug  'https://github.com/tpope/vim-repeat'
-Plug  'https://github.com/ConradIrwin/vim-bracketed-paste'
 Plug  'https://github.com/troydm/zoomwintab.vim'
-Plug  'https://github.com/simnalamburt/vim-mundo'
-Plug  'https://github.com/wincent/replay'
+Plug  'https://github.com/mbbill/undotree'
 Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug  'https://github.com/stefandtw/quickfix-reflector.vim'
 Plug 'https://github.com/lambdalisue/suda.vim'
 Plug 'jmckiern/vim-venter'
 
@@ -48,7 +43,7 @@ Plug 'https://github.com/peitalin/vim-jsx-typescript'
 Plug 'https://github.com/HerringtonDarkholme/yats.vim'
 
 "CSS
-Plug 'https://github.com/cakebaker/scss-syntax.vim'
+" Plug 'https://github.com/cakebaker/scss-syntax.vim'
 Plug 'https://github.com/JulesWang/css.vim'
 Plug 'https://github.com/hail2u/vim-css3-syntax'
 
@@ -60,7 +55,7 @@ Plug  'https://github.com/chriskempson/base16-vim'
 Plug  'https://github.com/RRethy/vim-illuminate'
 
 "Prose
-Plug  'https://github.com/godlygeek/tabular'
+" Plug  'https://github.com/godlygeek/tabular'
 Plug  'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
@@ -110,25 +105,21 @@ Plug 'https://github.com/prettier/vim-prettier', {
 "Git
 Plug  'https://github.com/airblade/vim-gitgutter'
 Plug  'https://github.com/Yggdroot/indentLine'
-Plug  'https://github.com/tpope/vim-fugitive'
 Plug  'https://github.com/jreybert/vimagit'
 Plug  'https://github.com/rhysd/git-messenger.vim'
-
+Plug  'https://github.com/pwntester/octo.nvim'
 "GoLang
 " Plug  'https://github.com/fatih/vim-go'
 Plug 'sebdah/vim-delve'
 
 "Ruby
-Plug  'https://github.com/tpope/vim-rails', { 'for': 'ruby' }
 Plug  'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug  'https://github.com/tpope/vim-bundler', { 'for': 'ruby' }
 Plug  'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 "Varnish
-Plug 'https://github.com/fgsch/vim-varnish'
-
+" Plug 'https://github.com/fgsch/vim-varnish'
 "Nginx
-Plug 'https://github.com/chr4/nginx.vim'
+" Plug 'https://github.com/chr4/nginx.vim'
 
 
 call plug#end()
@@ -220,6 +211,7 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>vt :VenterToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 "Enter Command Mode with space
 nmap <space> :
 " Sudo save
@@ -291,9 +283,6 @@ nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
 vnoremap <leader>64 c<c-r>=system('base64 --decode', @")<cr><esc>
 
-autocmd FileType vue syntax sync fromstart
-autocmd FileType *.scss syntax sync fromstart
-
 "keys
 imap jk <Esc>
 " map <Space> <Leader>
@@ -344,7 +333,6 @@ let g:vista_default_executive = 'nvim_lsp'
 lua require'lsp_config'
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 lua require'finder'
-
 
 "Completion.nvim
 " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -454,16 +442,6 @@ let g:VM_maps["Select All"] = '<M-C-g>'
 let g:VM_persistent_registers = 1
 let g:VM_overwrite_vim_registers = 1
 
-
-"Utilisnips
-let g:UltiSnipsExpandTrigger="<leader>ez"
-let g:UltiSnipsJumpForwardTrigger="<leader>b"
-let g:UltiSnipsJumpBackwardTrigger="<leader>z"
-nnoremap <leader>l :Snippets<CR>
-
-let UltiSnipsEditSplit = "vertical"
-let UltiSnipsUsePythonVersion = 3
-
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " AirLine
@@ -496,32 +474,6 @@ let g:used_javascript_libs = 'jquery,react,lodash'
 "JSX
 let g:jsx_ext_required = 0
 " let g:tigris#enabled = 1
-
-"Golang
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_arguments = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-
-" let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-" Open delve in horizontal split 
-let g:delve_new_command = "new"
-" let g:delve_use_vimux = 1
-let g:go_fmt_fail_silently = 1
 
 "ViMux
 function! VimuxSlime()
