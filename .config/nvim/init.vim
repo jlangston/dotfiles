@@ -8,35 +8,31 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug  'oberblastmeister/neuron.nvim'
+" Plug 'oberblastmeister/neuron.nvim'
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug  'https://github.com/tpope/vim-repeat'
-Plug  'https://github.com/tpope/vim-unimpaired'
-Plug  'https://github.com/mileszs/ack.vim'
-Plug  'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug  'https://github.com/bling/vim-airline.git'
-Plug  'https://github.com/christoomey/vim-tmux-navigator'
-Plug  'https://github.com/benmills/vimux'
-Plug  'https://github.com/edkolev/tmuxline.vim'
-Plug  'https://github.com/mg979/vim-visual-multi'
-Plug  'https://github.com/Valloric/MatchTagAlways.git'
-Plug  'https://github.com/Raimondi/delimitMate.git'
-Plug  'https://github.com/phaazon/hop.nvim'
-Plug  'https://github.com/thaerkh/vim-workspace'
-Plug  'https://github.com/ryanoasis/vim-devicons'
-Plug  'https://github.com/djoshea/vim-autoread'
-Plug  'https://github.com/roxma/vim-tmux-clipboard'
-Plug  'https://github.com/troydm/zoomwintab.vim'
-Plug  'https://github.com/mbbill/undotree'
-Plug  'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/mileszs/ack.vim'
+Plug 'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'https://github.com/bling/vim-airline.git'
+Plug 'https://github.com/christoomey/vim-tmux-navigator'
+Plug 'https://github.com/benmills/vimux'
+Plug 'https://github.com/edkolev/tmuxline.vim'
+Plug 'https://github.com/mg979/vim-visual-multi'
+Plug 'https://github.com/phaazon/hop.nvim'
+Plug 'https://github.com/thaerkh/vim-workspace'
+Plug 'https://github.com/ryanoasis/vim-devicons'
+Plug 'https://github.com/roxma/vim-tmux-clipboard'
+Plug 'https://github.com/troydm/zoomwintab.vim'
+Plug 'https://github.com/simnalamburt/vim-mundo'
+Plug 'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'https://github.com/lambdalisue/suda.vim'
 Plug 'jmckiern/vim-venter'
 
 "Javascript
-Plug  'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
-Plug  'https://github.com/Quramy/vim-js-pretty-template'
-Plug  'https://github.com/jparise/vim-graphql'
+Plug 'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
+Plug 'https://github.com/Quramy/vim-js-pretty-template'
+Plug 'https://github.com/jparise/vim-graphql'
 "
 " "Typescript
 Plug 'https://github.com/peitalin/vim-jsx-typescript'
@@ -48,27 +44,27 @@ Plug 'https://github.com/JulesWang/css.vim'
 Plug 'https://github.com/hail2u/vim-css3-syntax'
 
 " Colors
-Plug  'https://github.com/lilydjwg/colorizer'
-Plug  'https://github.com/jlangston/vim-hybrid'
-Plug  'https://github.com/vim-airline/vim-airline-themes'
-Plug  'https://github.com/chriskempson/base16-vim'
-Plug  'https://github.com/RRethy/vim-illuminate'
+Plug 'https://github.com/lilydjwg/colorizer'
+Plug 'https://github.com/jlangston/vim-hybrid'
+Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/chriskempson/base16-vim'
+Plug 'https://github.com/RRethy/vim-illuminate'
 
 "Prose
-" Plug  'https://github.com/godlygeek/tabular'
-Plug  'https://github.com/plasticboy/vim-markdown.git'
+" Plug 'https://github.com/godlygeek/tabular'
+Plug 'https://github.com/plasticboy/vim-markdown.git'
 
 "General Programming
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'https://github.com/hrsh7th/nvim-compe'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh', 'branch': 'main'  }
 Plug 'https://github.com/hrsh7th/vim-vsnip-integ'
 Plug 'https://github.com/alexaandru/nvim-lspupdate', {'branch': 'main'}
 Plug 'https://github.com/glepnir/lspsaga.nvim', {'branch': 'main'}
 Plug 'https://github.com/liuchengxu/vista.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/tpope/vim-unimpaired'
 Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/mattn/emmet-vim'
 Plug 'https://github.com/hrsh7th/vim-vsnip'
@@ -76,51 +72,52 @@ Plug 'https://github.com/janko-m/vim-test'
 Plug 'https://github.com/sbdchd/neoformat'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/AndrewRadev/splitjoin.vim'
-Plug 'https://github.com/metakirby5/codi.vim'
+" Plug 'https://github.com/metakirby5/codi.vim'
 Plug 'puremourning/vimspector'
 
 
 Plug 'https://github.com/prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'branch': 'release/1.x',
-      \ 'for': [
-      \ 'javascript',
-      \ 'typescript',
-      \ 'css',
-      \ 'less',
-      \ 'scss',
-      \ 'json',
-      \ 'graphql',
-      \ 'markdown',
-      \ 'vue',
-      \ 'lua',
-      \ 'php',
-      \ 'python',
-      \ 'ruby',
-      \ 'html',
-      \ 'eruby',
-      \ 'swift' ] }
-
+                  \ 'do': 'yarn install',
+                  \ 'branch': 'release/1.x',
+                  \ 'for': [
+                  \ 'javascript',
+                  \ 'typescript',
+                  \ 'css',
+                  \ 'less',
+                  \ 'scss',
+                  \ 'json',
+                  \ 'graphql',
+                  \ 'markdown',
+                  \ 'vue',
+                  \ 'lua',
+                  \ 'php',
+                  \ 'python',
+                  \ 'ruby',
+                  \ 'html',
+                  \ 'eruby',
+                  \ 'swift' ] }
 
 "Git
-Plug  'https://github.com/airblade/vim-gitgutter'
-Plug  'https://github.com/Yggdroot/indentLine'
-Plug  'https://github.com/jreybert/vimagit'
-Plug  'https://github.com/rhysd/git-messenger.vim'
-Plug  'https://github.com/pwntester/octo.nvim'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/Yggdroot/indentLine'
+" Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/jreybert/vimagit'
+Plug 'https://github.com/rhysd/git-messenger.vim'
+Plug 'https://github.com/pwntester/octo.nvim'
+
 "GoLang
-" Plug  'https://github.com/fatih/vim-go'
-Plug 'sebdah/vim-delve'
+" Plug 'https://github.com/fatih/vim-go'
+" Plug 'sebdah/vim-delve'
 
 "Ruby
-Plug  'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug  'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 "Varnish
 " Plug 'https://github.com/fgsch/vim-varnish'
+
 "Nginx
 " Plug 'https://github.com/chr4/nginx.vim'
-
 
 call plug#end()
 
@@ -135,13 +132,13 @@ syntax on
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 if &term == "xterm"
-  set term=xterm-256color
+      set term=xterm-256color
 endif
 set background=dark
 if (has("termguicolors"))
-  set termguicolors
-    hi LineNr ctermbg=NONE guibg=NONE
-    hi! Normal ctermbg=NONE guibg=NONE
+      set termguicolors
+      hi LineNr ctermbg=NONE guibg=NONE
+      hi! Normal ctermbg=NONE guibg=NONE
 endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -179,9 +176,9 @@ set autowrite                   " Automatically save before :next, :make etc.
 set autoread                    " Automatically reread changed files without asking me anything
 set backupcopy=yes
 if exists('g:started_by_firenvim')
-  set laststatus=0
+      set laststatus=0
 else
-  set laststatus=2
+      set laststatus=2
 endif
 
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
@@ -211,7 +208,6 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 nnoremap <leader>ev :split $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>vt :VenterToggle<CR>
-nnoremap <leader>ut :UndotreeToggle<CR>
 "Enter Command Mode with space
 nmap <space> :
 " Sudo save
@@ -223,27 +219,24 @@ nmap :q1 :q!
 nmap :Q1 :q!
 nmap :Q :q
 
-"Rainbow parens/braces
-let g:rainbow_active = 0
-
 function! SetLightTheme()
-  colorscheme base16-solarized-light
-  AirlineTheme sol
+      colorscheme base16-solarized-light
+      AirlineTheme sol
 endfunction
 
 nmap <Leader>cs :call SetLightTheme()<CR>
 
 
 function! SetOceanTheme()
-  colorscheme base16-ocean
-  AirlineTheme base16_ocean
+      colorscheme base16-ocean
+      AirlineTheme base16_ocean
 endfunction
 
 nmap <Leader>ot :call SetOceanTheme()<CR>
 
 
 function! SetClearBackground()
-  hi! Normal ctermbg=NONE guibg=NONE
+      hi! Normal ctermbg=NONE guibg=NONE
 endfunction
 
 nmap <Leader>cb :call SetClearBackground()<CR>
@@ -300,28 +293,27 @@ nmap <silent> <leader>tg :TestVisit<CR>
 let g:user_emmet_expandabbr_key = '<Tab>'
 let g:user_emmet_mode='a'
 let g:user_emmet_settings = {
-      \  'javascript' : {
-      \    'extends' : 'jsx',
-      \    'default_attributes' : {
-      \      'label': [{'htmlFor': ' '}],
-      \      'class': { 'className': ' '},
-      \    },
-      \  },
-      \}
+                  \  'javascript' : {
+                  \    'extends' : 'jsx',
+                  \    'default_attributes' : {
+                  \      'label': [{'htmlFor': ' '}],
+                  \      'class': { 'className': ' '},
+                  \    },
+                  \  },
+                  \}
 
 function! ToggleJsxCssFt()
-  if &filetype == 'javascript.jsx'
-    set filetype=css
-  else
-    set filetype=javascript.jsx
-  endif
+      if &filetype == 'javascript.jsx'
+            set filetype=css
+      else
+            set filetype=javascript.jsx
+      endif
 endfunction
 
 nnoremap <leader>et :call ToggleJsxCssFt()<cr>
 
 "NerdTree
 map <C-k>b :CHADopen<CR>
-
 nnoremap <leader>s :ToggleWorkspace<CR>
 
 "Vista
@@ -358,13 +350,13 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 "VimDif\
 if &diff
-  nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-  nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
-  vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-  vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
-  map <leader>1 :diffget LOCAL<CR>
-  map <leader>2 :diffget BASE<CR>
-  map <leader>3 :diffget REMOTE<CR>
+      nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
+      nnoremap <expr> <silent> cn (&diff ? "]c" : ":cnext\<CR>")
+      vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+      vnoremap <expr> <silent> cp (&diff ? "[c" : ":cprev\<CR>")
+      map <leader>1 :diffget LOCAL<CR>
+      map <leader>2 :diffget BASE<CR>
+      map <leader>3 :diffget REMOTE<CR>
 endif
 
 " Comment lines with cmd+/
@@ -375,25 +367,10 @@ vmap <M-/> :TComment<cr>gv
 
 " terminal 
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <M-[> <Esc>
-  tnoremap <C-v><Esc> <Esc>
+      tnoremap <Esc> <C-\><C-n>
+      tnoremap <M-[> <Esc>
+      tnoremap <C-v><Esc> <Esc>
 endif
-
-"Easy Motion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-s)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap ss <Plug>(easymotion-s2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
@@ -403,11 +380,11 @@ map <Leader>k <Plug>(easymotion-k)
 autocmd VimEnter * command! Colors call fzf#vim#colors({'left': '15%'})
 
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
+      if(&relativenumber == 1)
+            set norelativenumber
+      else
+            set relativenumber
+      endif
 endfunc
 
 nnoremap <leader>nt :call NumberToggle()<cr>
@@ -458,11 +435,11 @@ let g:airline#extensions#nvimlsp#enabled = 1
 
 " Tmuxline config
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
+                  \'a'    : '#S',
+                  \'win'  : ['#I', '#W'],
+                  \'cwin' : ['#I', '#W', '#F'],
+                  \'y'    : ['%R', '%a', '%Y'],
+                  \'z'    : '#H'}
 
 "NeoFormat
 nnoremap <leader>nfm :Neoformat<CR>
@@ -477,8 +454,8 @@ let g:jsx_ext_required = 0
 
 "ViMux
 function! VimuxSlime()
-  call VimuxSendText(@v)
-  call VimuxSendKeys("Enter")
+      call VimuxSendText(@v)
+      call VimuxSendKeys("Enter")
 endfunction
 
 "If text is selected, save it in the v buffer and send that buffer it to tmux
@@ -499,47 +476,47 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "Markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 
 function! ToggleSpell()
-  if !exists("g:showingSpell")
-    let g:showingSpell=0
-  endif
+      if !exists("g:showingSpell")
+            let g:showingSpell=0
+      endif
 
-  if g:showingSpell==0
-    execute "hi SpellBad cterm=underline ctermfg=red"
-    let g:showingSpell=1
-  else
-    execute "hi clear SpellBad"
-    let g:showingSpell=0
-  endif
+      if g:showingSpell==0
+            execute "hi SpellBad cterm=underline ctermfg=red"
+            let g:showingSpell=1
+      else
+            execute "hi clear SpellBad"
+            let g:showingSpell=0
+      endif
 endfunction
 nmap <Leader>sp :call ToggleSpell()<CR>
 
 if has('autocmd')
-  augroup VimCSS3Syntax
-    autocmd!
-    autocmd FileType css setlocal iskeyword+=-
-  augroup END
+      augroup VimCSS3Syntax
+            autocmd!
+            autocmd FileType css setlocal iskeyword+=-
+      augroup END
 
-  call jspretmpl#register_tag('gql', 'graphql')
-  autocmd FileType javascript.jsx JsPreTmpl
-  autocmd FileType javascript JsPreTmpl
+      call jspretmpl#register_tag('gql', 'graphql')
+      autocmd FileType javascript.jsx JsPreTmpl
+      autocmd FileType javascript JsPreTmpl
 endif
 
 
 
 "RipGrep
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
+      let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
 
@@ -548,18 +525,18 @@ let g:nv_search_paths = ['~/Dropbox/notes']
 map <Leader>nv :NV<cr>
 
 let g:firenvim_config = { 
-      \ 'globalSettings': {
-      \ 'alt': 'all',
-      \  },
-      \ 'localSettings': {
-      \ '.*': {
-      \ 'cmdline': 'firenvim',
-      \ 'priority': 0,
-      \ 'selector': 'textarea',
-      \ 'takeover': 'never',
-      \ },
-      \ }
-      \ }
+                  \ 'globalSettings': {
+                  \ 'alt': 'all',
+                  \  },
+                  \ 'localSettings': {
+                  \ '.*': {
+                  \ 'cmdline': 'firenvim',
+                  \ 'priority': 0,
+                  \ 'selector': 'textarea',
+                  \ 'takeover': 'never',
+                  \ },
+                  \ }
+                  \ }
 
 sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
