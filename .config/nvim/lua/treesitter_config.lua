@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,                    -- false will disable the whole extension
-      disable = { "tsx", "typescript", "javascript" }, -- list of language that will be disabled
+      -- disable = { "tsx", "typescript", "javascript" }, -- list of language that will be disabled
       custom_captures = {               -- mapping of user defined captures to highlight groups
         -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
       },
@@ -65,5 +65,5 @@ require'nvim-treesitter.configs'.setup {
         ["im"] = "@call.inner"
       }
     },
-    ensure_installed = {"ruby", "rust", "python", "go",  "html", "typescript", "tsx", "css", "json"} -- one of "all", "language", or a list of languages
+    ensure_installed = {"ruby", "rust", "python", "go",  "html", "javascript", "typescript", "tsx", "css", "json"} -- one of "all", "language", or a list of languages
 }

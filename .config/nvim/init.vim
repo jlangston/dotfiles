@@ -12,6 +12,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/Raimondi/delimitMate'
 Plug 'https://github.com/mileszs/ack.vim'
 Plug 'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'https://github.com/bling/vim-airline.git'
@@ -30,18 +31,7 @@ Plug 'https://github.com/lambdalisue/suda.vim'
 Plug 'jmckiern/vim-venter'
 
 "Javascript
-Plug 'https://github.com/styled-components/vim-styled-components', {'branch': 'main' }
-Plug 'https://github.com/Quramy/vim-js-pretty-template'
 Plug 'https://github.com/jparise/vim-graphql'
-"
-" "Typescript
-Plug 'https://github.com/peitalin/vim-jsx-typescript'
-Plug 'https://github.com/HerringtonDarkholme/yats.vim'
-
-"CSS
-" Plug 'https://github.com/cakebaker/scss-syntax.vim'
-Plug 'https://github.com/JulesWang/css.vim'
-Plug 'https://github.com/hail2u/vim-css3-syntax'
 
 " Colors
 Plug 'https://github.com/lilydjwg/colorizer'
@@ -500,18 +490,6 @@ function! ToggleSpell()
       endif
 endfunction
 nmap <Leader>sp :call ToggleSpell()<CR>
-
-if has('autocmd')
-      augroup VimCSS3Syntax
-            autocmd!
-            autocmd FileType css setlocal iskeyword+=-
-      augroup END
-
-      call jspretmpl#register_tag('gql', 'graphql')
-      autocmd FileType javascript.jsx JsPreTmpl
-      autocmd FileType javascript JsPreTmpl
-endif
-
 
 
 "RipGrep
