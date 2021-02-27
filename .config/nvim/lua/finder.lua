@@ -34,7 +34,7 @@ local keymap_telescope_func = {
   ["<Leader>f"] = "require'telescope.builtin'.live_grep()",
   ["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
   ["<Leader>gb"] = "require'telescope.builtin'.git_branches()",
-  ["<Leader>bc"] = "require'telescope.builtin'.git_branches()",
+  ["<Leader>bc"] = "require'telescope.builtin'.git_bcommits()",
   ["t"] = "require'telescope.builtin'.lsp_document_symbols()",
   ["T"] = "require'telescope.builtin'.lsp_workspace_symbols()",
   [";"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
