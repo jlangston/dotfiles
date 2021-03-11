@@ -17,6 +17,12 @@ vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
 
+require'nvim-treesitter.configs'.setup {
+  rainbow = {
+    enable = true
+  }
+}
+
 ---- saga
 local saga = require 'lspsaga'
 local saga_opts = {
