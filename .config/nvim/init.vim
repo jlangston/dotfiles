@@ -9,64 +9,70 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Plug 'oberblastmeister/neuron.nvim'
-Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'alok/notational-fzf-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'https://github.com/tpope/vim-repeat'
-Plug 'https://github.com/Raimondi/delimitMate'
-Plug 'https://github.com/mileszs/ack.vim'
-Plug 'https://github.com/ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-Plug 'https://github.com/bling/vim-airline.git'
-Plug 'https://github.com/christoomey/vim-tmux-navigator'
-Plug 'https://github.com/benmills/vimux'
-Plug 'https://github.com/edkolev/tmuxline.vim'
-Plug 'https://github.com/mg979/vim-visual-multi'
-Plug 'https://github.com/phaazon/hop.nvim'
-Plug 'https://github.com/thaerkh/vim-workspace'
-Plug 'https://github.com/ryanoasis/vim-devicons'
-Plug 'https://github.com/roxma/vim-tmux-clipboard'
-Plug 'https://github.com/troydm/zoomwintab.vim'
-Plug 'https://github.com/simnalamburt/vim-mundo'
-Plug 'https://github.com/glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'https://github.com/lambdalisue/suda.vim'
+Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate'
+Plug 'mileszs/ack.vim'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'edkolev/tmuxline.vim'
+Plug 'mg979/vim-visual-multi'
+Plug 'phaazon/hop.nvim'
+Plug 'thaerkh/vim-workspace'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'troydm/zoomwintab.vim'
+Plug 'simnalamburt/vim-mundo'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'lambdalisue/suda.vim'
 Plug 'jmckiern/vim-venter'
+Plug 'mhinz/vim-startify'
 
 "Javascript
-Plug 'https://github.com/jparise/vim-graphql'
+Plug 'jparise/vim-graphql'
 
 " Colors
-Plug 'https://github.com/lilydjwg/colorizer'
-Plug 'https://github.com/jlangston/vim-hybrid'
-Plug 'https://github.com/vim-airline/vim-airline-themes'
-Plug 'https://github.com/chriskempson/base16-vim'
-Plug 'https://github.com/RRethy/vim-illuminate'
+Plug 'lilydjwg/colorizer'
+Plug 'jlangston/vim-hybrid'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+Plug 'RRethy/vim-illuminate'
+Plug 'p00f/nvim-ts-rainbow'
 
 "Prose
-" Plug 'https://github.com/godlygeek/tabular'
-Plug 'https://github.com/plasticboy/vim-markdown.git'
+" Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 "General Programming
-Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'https://github.com/hrsh7th/nvim-compe'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'onsails/lspkind-nvim'
 Plug 'tzachar/compe-tabnine', { 'do': './install.sh', 'branch': 'main'  }
-Plug 'https://github.com/hrsh7th/vim-vsnip-integ'
-Plug 'https://github.com/alexaandru/nvim-lspupdate', {'branch': 'main'}
-Plug 'https://github.com/glepnir/lspsaga.nvim', {'branch': 'main'}
-Plug 'https://github.com/liuchengxu/vista.vim'
-Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/tomtom/tcomment_vim.git'
-Plug 'https://github.com/mattn/emmet-vim'
-Plug 'https://github.com/hrsh7th/vim-vsnip'
-Plug 'https://github.com/janko-m/vim-test'
-Plug 'https://github.com/sbdchd/neoformat'
-Plug 'https://github.com/kana/vim-textobj-user'
-Plug 'https://github.com/AndrewRadev/splitjoin.vim'
-" Plug 'https://github.com/metakirby5/codi.vim'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'alexaandru/nvim-lspupdate', {'branch': 'main'}
+Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
+Plug 'liuchengxu/vista.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'mattn/emmet-vim'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'janko-m/vim-test'
+Plug 'rcarriga/vim-ultest', {'do': ':UpdateRemotePlugins'}
+Plug 'sbdchd/neoformat'
+Plug 'kana/vim-textobj-user'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'metakirby5/codi.vim'
 Plug 'puremourning/vimspector'
 
 
-Plug 'https://github.com/prettier/vim-prettier', {
+Plug 'prettier/vim-prettier', {
                   \ 'do': 'yarn install',
                   \ 'branch': 'release/1.x',
                   \ 'for': [
@@ -88,26 +94,26 @@ Plug 'https://github.com/prettier/vim-prettier', {
                   \ 'swift' ] }
 
 "Git
-Plug 'https://github.com/airblade/vim-gitgutter'
-Plug 'https://github.com/Yggdroot/indentLine'
-" Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/jreybert/vimagit'
-Plug 'https://github.com/rhysd/git-messenger.vim'
-Plug 'https://github.com/pwntester/octo.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
+" Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
+Plug 'rhysd/git-messenger.vim'
+Plug 'pwntester/octo.nvim'
 
 "GoLang
-" Plug 'https://github.com/fatih/vim-go'
+" Plug 'fatih/vim-go'
 " Plug 'sebdah/vim-delve'
 
 "Ruby
-Plug 'https://github.com/vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'https://github.com/nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 "Varnish
-" Plug 'https://github.com/fgsch/vim-varnish'
+" Plug 'fgsch/vim-varnish'
 
 "Nginx
-" Plug 'https://github.com/chr4/nginx.vim'
+" Plug 'chr4/nginx.vim'
 
 call plug#end()
 
