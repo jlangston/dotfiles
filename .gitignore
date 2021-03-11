@@ -13,3 +13,4 @@
 .config/vimb/command
 .config/kitty/kitty-themes/
 .config/ranger/__pycache__/*
+.config/ranger/plugins/__pycache__/__init__.cpython-39.opt-1.pyc
