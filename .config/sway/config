@@ -335,6 +335,7 @@ exec swayidle -w \
          timeout 11 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
          resume 'swaymsg "output * dpms on"'
 exec wl-paste -t text --watch clipman store
+exec /usr/libexec/xdg-desktop-portal --verbose -r
 
 output DP-3 pos 0 0 res 2560x1440 transform 90 transform 90
 output DP-4 pos 1440 200 res 3840x2160
